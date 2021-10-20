@@ -1,5 +1,6 @@
 package business;
 
+import Domain.ResponseDto;
 import Model.Cliente;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,15 +13,14 @@ import java.io.IOException;
  * @version 1.0
  */
 
-public interface ServiceGetBusiness {
+public interface ServiceCreateBusiness {
     /**
      * Permite consultar una lista con todos los clientes
      * @return Objeto de respuesta lista de objetos Cliente
      */
 
-    boolean agregarCliente(Cliente cliente);
-    void actualizarCliente(Cliente cliente);
-    String addPhoto(int ClientId, MultipartFile file) throws IOException;
+    ResponseDto agregarCliente(Cliente cliente);
+    ResponseDto<String> addPhoto(int ClientId, MultipartFile file) throws IOException;
     String addPhoto2(int title, String image);
 
 

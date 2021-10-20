@@ -1,11 +1,11 @@
 package Domain;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
 
 /**
  * Clase que define un objeto de respuesta generico para todos las Apis
@@ -16,7 +16,8 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Getter
-public class ResponseDto<T> {
+@Setter
+public class ResponseDto<T> implements Serializable {
 
     private int status;
     private String responseCode;

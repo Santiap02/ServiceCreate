@@ -1,12 +1,17 @@
 package Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 @Getter
 @Document(collection = "images")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Photo {
     @Id
     private String id;
@@ -20,4 +25,7 @@ public class Photo {
         this.image = image;
     }
 
+    public Photo(int clientId) {
+        this.clientId = clientId;
+    }
 }

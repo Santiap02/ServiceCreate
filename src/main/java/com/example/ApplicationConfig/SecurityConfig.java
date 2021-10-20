@@ -1,4 +1,4 @@
-package com.example.servicecreate;
+package com.example.ApplicationConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

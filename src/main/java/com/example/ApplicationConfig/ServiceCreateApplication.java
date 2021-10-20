@@ -1,4 +1,4 @@
-package com.example.servicecreate;
+package com.example.ApplicationConfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 @Import(SecurityConfig.class)
-@ComponentScan(basePackages = {"Controller","Model","Service","Data"})
+@ComponentScan(basePackages = {"Rest","Model","business", "Repository"})
 @EntityScan(basePackages = {"model"})
-@EnableJpaRepositories(basePackages = {"Data"})
-@EnableMongoRepositories(basePackages = {"Data"})
+@EnableJpaRepositories(basePackages = {"Repository"})
+@EnableMongoRepositories(basePackages = {"Repository"})
 @SpringBootApplication
 public class ServiceCreateApplication {
 
