@@ -52,14 +52,14 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
 
 
     @Override
-    public ResponseDto<String> addPhoto(int ClientId, MultipartFile file) throws IOException {
+    public ResponseDto<String> addPhoto(int clientId, MultipartFile file) throws IOException {
         LOGGER.debug("Se inicia addPhoto");
-        Photo photo = new Photo(ClientId);
+        Photo photo = new Photo(clientId);
         photo.setImage(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
         ResponseDto<String> response = new ResponseDto<>();
 
         try {
-            if(photoRepository.findByClientId(ClientId)==null){
+            if(photoRepository.findByClientId(clientId)==null){
                 photo = photoRepository.insert(photo);
                 response = new ResponseDto<String>(HttpStatus.OK.value(), ServiceConstants.SA002, ServiceConstants.SA002M, "MongoId de la imagen: "+photo.getId());
 
@@ -71,22 +71,10 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
             response = new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), ServiceConstants.SA100, ServiceConstants.SA100M);
             LOGGER.error("Error in getClients", e);
         }
-        LOGGER.debug("addPhoto retorna: "+response);
+        LOGGER.debug("addPhoto retorna: "+ response);
         return  response;
 
     }
 
-    @Override
-    public String addPhoto2(int title, String image) {
-        Photo photo = new Photo(title);
-        photo.setImage(new Binary(BsonBinarySubType.BINARY, image.getBytes()));
-        if(photoRepository.findByClientId(title)==null){
-            photo = photoRepository.insert(photo);
-            return photo.getId();
 
-        }
-        else{
-            return "La imagen ya existe";
-        }
-    }
 }

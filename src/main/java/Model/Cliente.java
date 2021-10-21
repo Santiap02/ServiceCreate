@@ -1,16 +1,19 @@
 package Model;
-
+/**
+ * Modelo para la conexion a la base de datos "clientes".
+ *
+ * @author santiago.alvarezp@udea.edu.co
+ *
+ */
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="clientes")
 public class Cliente {
     @Id
     ///@GeneratedValue(strategy= GenerationType.IDENTITY)
-    @NotNull
     private Integer idCliente;
     private String nombres;
     private String apellidos;

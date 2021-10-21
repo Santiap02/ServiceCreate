@@ -8,6 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Repositorio base de datos "clientes".
+ *
+ * @author santiago.alvarezp@udea.edu.co
+ *
+ */
 public interface ClientRepository extends JpaRepository<Cliente, Integer> {
     @Transactional
     @Modifying

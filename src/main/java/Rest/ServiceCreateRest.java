@@ -31,11 +31,5 @@ public class ServiceCreateRest {
         var response = serviceGetBusiness.addPhoto(clientId, image);
         return response;
     }
-    /*
-    @PostMapping("/photos/add")
-    public String addPhoto(@RequestParam("title") int title, @RequestParam("image") String image) {
-        String id = photoService.addPhoto2(title, image);
-        return "redirect:/photos/" + id;
-    }
-    */
+
 }

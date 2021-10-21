@@ -15,13 +15,19 @@ import java.io.IOException;
 
 public interface ServiceCreateBusiness {
     /**
-     * Permite consultar una lista con todos los clientes
-     * @return Objeto de respuesta lista de objetos Cliente
+     * Permite crear un cliente nuevo
+     * @return Respuesta lista de objetos Cliente
      */
 
     ResponseDto agregarCliente(Cliente cliente);
-    ResponseDto<String> addPhoto(int ClientId, MultipartFile file) throws IOException;
-    String addPhoto2(int title, String image);
+    /**
+     * Permite crear una foto asignada a un cliente a partir de su Id
+     *
+     * @param clientId Identificacion del usuario
+     * @param file     Archivo de imagen
+     * @return Objeto de respuesta ResponseDto con
+     */
+    ResponseDto<String> addPhoto(int clientId, MultipartFile file) throws IOException;
 
 
 }

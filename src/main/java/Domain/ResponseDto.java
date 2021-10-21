@@ -9,8 +9,8 @@ import java.io.Serializable;
 
 /**
  * Clase que define un objeto de respuesta generico para todos las Apis
- * 
- * @author ricardo.ayala@pragma.com.co
+ *
+ * @author santiago.alvarezp@udea.edu.co
  *
  * @param <T>
  */
