@@ -5,15 +5,19 @@ package Model;
  * @author santiago.alvarezp@udea.edu.co
  *
  */
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+@Getter
+@Setter
 @Entity
 @Table(name="clientes")
 public class Cliente {
     @Id
-    ///@GeneratedValue(strategy= GenerationType.IDENTITY)
+
     private Integer idCliente;
     private String nombres;
     private String apellidos;
@@ -25,47 +29,4 @@ public class Cliente {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getDoctype() {
-        return Doctype;
-    }
-
-    public void setDoctype(String doctype) {
-        Doctype = doctype;
-    }
-
-    public int getEdad() {
-        return Edad;
-    }
-
-    public void setEdad(int edad) {
-        Edad = edad;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
 }

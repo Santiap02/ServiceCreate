@@ -17,17 +17,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Photo {
     @Id
     private String id;
-
     @Indexed(unique = true)
     private int clientId;
-
     private Binary image;
-
-    public Photo(int title) {
-    }
 
     public void setImage(Binary image) {
         this.image = image;
+    }
+    public Photo(int clientId) {
+        this.clientId = clientId;
     }
 
 }

@@ -17,17 +17,13 @@ public class ServiceCreateRest {
     private final ServiceCreateBusiness serviceGetBusiness;
 
 
-
-
-    //Save client
     @PostMapping(value="/clientes",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseDto<String> guardarCliente(@RequestBody Cliente cliente){
+    public ResponseDto<String> saveClient(@RequestBody Cliente cliente){
         return this.serviceGetBusiness.agregarCliente(cliente);
     }
 
-
     @PostMapping("/photos/add")
-    public ResponseDto<String> addPhoto(@RequestParam("title") int clientId, @RequestParam("image") MultipartFile image, Model model) throws IOException {
+    public ResponseDto<String> addPhoto(@RequestParam("clientId") int clientId, @RequestParam("image") MultipartFile image) throws IOException {
         var response = serviceGetBusiness.addPhoto(clientId, image);
         return response;
     }
