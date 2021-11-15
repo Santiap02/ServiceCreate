@@ -28,8 +28,8 @@ public class ValidationUtils {
     }
     private void throwExceptionIfExistsViolations(Set<ConstraintViolation<Object>> violations) {
         if (!violations.isEmpty()) {
-            throw new ServiceCreateException(HttpStatus.BAD_REQUEST.value(), ServiceConstants.SA002,
-                    ServiceConstants.SA002M);
+            throw new ServiceCreateException(HttpStatus.BAD_REQUEST.value(), ServiceConstants.SA004,
+                    ServiceConstants.SA004M);
         }
     }
 }
