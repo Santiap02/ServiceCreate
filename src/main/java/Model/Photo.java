@@ -12,6 +12,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Modelo para la conexion a la base de datos "Test4" coleccion imagenes.
+ *
+ * @author santiago.alvarezp@udea.edu.co
+ *
+ */
 @Getter
 @Document(collection = "images")
 public class Photo {
@@ -24,6 +30,7 @@ public class Photo {
     public void setImage(Binary image) {
         this.image = image;
     }
+
     public Photo(int clientId) {
         this.clientId = clientId;
     }

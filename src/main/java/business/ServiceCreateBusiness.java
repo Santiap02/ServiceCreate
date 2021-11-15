@@ -1,10 +1,8 @@
 package business;
 
-import Domain.ResponseDto;
+import domain.ResponseDto;
 import Model.Cliente;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 /**
  * Interface donde se definen las operaciones a implementar para el proceso consulta de informacion de clientes
@@ -19,7 +17,7 @@ public interface ServiceCreateBusiness {
      * @return Respuesta lista de objetos Cliente
      */
 
-    ResponseDto agregarCliente(Cliente cliente);
+    ResponseDto newClient(Cliente cliente);
     /**
      * Permite crear una foto asignada a un cliente a partir de su Id
      *
@@ -27,7 +25,7 @@ public interface ServiceCreateBusiness {
      * @param file     Archivo de imagen
      * @return Objeto de respuesta ResponseDto con
      */
-    ResponseDto<String> addPhoto(int clientId, MultipartFile file) throws IOException;
+    ResponseDto<String> addPhoto(int clientId, MultipartFile file);
 
 
 }
