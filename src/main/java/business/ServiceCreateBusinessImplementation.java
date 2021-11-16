@@ -21,6 +21,7 @@ import repository.PhotoRepository;
 @Service
 @AllArgsConstructor
 public class ServiceCreateBusinessImplementation implements ServiceCreateBusiness {
+
     /** Logger */
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceCreateBusinessImplementation.class);
     /** Objeto para acceder a la capa de datos de clientes */
@@ -29,14 +30,13 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
     private final PhotoRepository photoRepository;
     /** Validador*/
     private final ValidationUtils validationUtils;
+
     /**
-     *
      * @see ServiceCreateBusiness#newClient(Cliente)
-     *
      */
     @Override
     public ResponseDto<String> newClient(Cliente cliente) {
-        LOGGER.debug("Se inicia agregarCliente");
+        LOGGER.debug("Se inicia newClient");
         ResponseDto<String> response;
         try {
             validationUtils.validate(cliente);
@@ -51,10 +51,10 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
             LOGGER.error("Error in newClient", e);
             response = new ResponseDto<>(e.getStatus(), e.getCode(), e.getMessage());
         }catch (Exception e){
-            LOGGER.error("Error in getClients", e);
+            LOGGER.error("Error in newClient", e);
             response = new ResponseDto<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), ServiceConstants.SA100, ServiceConstants.SA100M);
         }
-        LOGGER.debug("AgregarCliente retorna: {}",response);
+        LOGGER.debug("newClient retorna: {}",response);
         return  response;
     }
 
@@ -78,11 +78,11 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
                 response = new ResponseDto<>(HttpStatus.FORBIDDEN.value(), ServiceConstants.SA003, ServiceConstants.SA003M);
             }
         }catch (ServiceCreateException e){
-            LOGGER.error("Error in newClient", e);
+            LOGGER.error("Error in addPhoto", e);
             response = new ResponseDto<>(e.getStatus(), e.getCode(), e.getMessage());
         }catch (Exception e) {
             response = new ResponseDto<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), ServiceConstants.SA100, ServiceConstants.SA100M);
-            LOGGER.error("Error in getClients", e);
+            LOGGER.error("Error in addPhoto", e);
         }
         LOGGER.debug("addPhoto retorna: {}", response);
         return  response;

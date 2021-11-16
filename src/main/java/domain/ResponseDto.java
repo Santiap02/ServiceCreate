@@ -1,9 +1,6 @@
 package domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -16,7 +13,7 @@ import java.io.Serializable;
  */
 
 @Getter
-@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseDto<T> implements Serializable {
@@ -30,9 +27,4 @@ public class ResponseDto<T> implements Serializable {
         this(status, responseCode, responseMessage, null);
     }
 
-    @Override
-    public String toString() {
-        return "ResponseDto{" + "status=" + status + ", responseCode='" + responseCode + '\'' + ", responseMessage='" + responseMessage
-                + '\'' + ", data=" + data + '}';
-    }
 }

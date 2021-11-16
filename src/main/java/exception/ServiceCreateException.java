@@ -5,14 +5,8 @@ package exception;
  * @author santiago.alvarezp@udea.edu.co
  *
  */
-
-
-
 public class ServiceCreateException extends RuntimeException {
 
-    /**
-     * Serial version
-     */
     private static final long serialVersionUID = -958060418553191973L;
     /**
      * Valor que permite definir un estado para la respuesta HTTP en caso de que deba ser propagada desde el origen de la excepcion
@@ -26,9 +20,9 @@ public class ServiceCreateException extends RuntimeException {
     /**
      * Constructor para la creacion de excepciones personalizadas sin causa raiz
      *
-     * @param status
-     * @param code
-     * @param message
+     * @param status estatus
+     * @param code código
+     * @param message mensaje
      */
     public ServiceCreateException(int status, String code, String message) {
         super(message);
@@ -53,7 +47,6 @@ public class ServiceCreateException extends RuntimeException {
         this.status = status;
         this.code = code;
     }
-
 
     /**
      * @return the status

@@ -5,19 +5,20 @@ import Model.Cliente;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Interface donde se definen las operaciones a implementar para el proceso consulta de informacion de clientes
+ * Interfaz donde se definen las operaciones a implementar para el proceso creación de información de clientes
  *
  * @author santiago.alvarezp@udea.edu.co
  * @version 1.0
  */
 
 public interface ServiceCreateBusiness {
+
     /**
      * Permite crear un cliente nuevo
      * @return Respuesta lista de objetos Cliente
      */
-
     ResponseDto<String> newClient(Cliente cliente);
+
     /**
      * Permite crear una foto asignada a un cliente a partir de su Id
      *
@@ -26,6 +27,5 @@ public interface ServiceCreateBusiness {
      * @return Objeto de respuesta ResponseDto con
      */
     ResponseDto<String> addPhoto(int clientId, MultipartFile file);
-
 
 }

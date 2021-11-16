@@ -19,6 +19,4 @@ public class ServiceConstants {
     public static final String SA003M = "El cliente ya existe";
     public static final String SA004M= "Solicitud incorrecta. Por favor valide los datos enviados.";
 
-
-
 }

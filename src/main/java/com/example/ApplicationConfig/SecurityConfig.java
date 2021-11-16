@@ -14,7 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
-    //definición roles y usuarios
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -32,13 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                //solo los miembros del rol admin podrán realizar altas
-                //y para ver la lista de contactos, tendrán que estar autenticados
-                .antMatchers(HttpMethod.POST,"/clientes").authenticated()
-                .antMatchers(HttpMethod.POST,"/photos/add").authenticated()
+                .antMatchers(HttpMethod.POST,"/clientes").fullyAuthenticated()
+                .antMatchers(HttpMethod.POST,"/photos/add").fullyAuthenticated()
                 .antMatchers("/").authenticated()
-                //.antMatchers("/**").authenticated()
-                //.antMatchers("/contactos/**").authenticated()
                 .and()
                 .httpBasic();
 
