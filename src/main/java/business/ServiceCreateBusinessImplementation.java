@@ -1,14 +1,11 @@
 package business;
 
-import Util.ValidationUtils;
-import domain.ResponseDto;
 import Model.Cliente;
 import Model.Photo;
-import exception.ServiceCreateException;
-import org.springframework.beans.factory.annotation.Autowired;
-import repository.ClientRepository;
-import repository.PhotoRepository;
 import Util.ServiceConstants;
+import Util.ValidationUtils;
+import domain.ResponseDto;
+import exception.ServiceCreateException;
 import lombok.AllArgsConstructor;
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
@@ -17,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.rmi.server.ServerCloneException;
+import repository.ClientRepository;
+import repository.PhotoRepository;
 
 
 @Service
@@ -30,11 +27,12 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
     private final ClientRepository clientRepository;
     /** Objeto para acceder a la capa de datos de fotos */
     private final PhotoRepository photoRepository;
-    @Autowired
-    ValidationUtils validationUtils;
+    /** Validador*/
+    private final ValidationUtils validationUtils;
     /**
      *
      * @see ServiceCreateBusiness#newClient(Cliente)
+     *
      */
     @Override
     public ResponseDto<String> newClient(Cliente cliente) {
@@ -47,7 +45,7 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
                 response = new ResponseDto<>(HttpStatus.CREATED.value(), ServiceConstants.SA002, ServiceConstants.SA002M);
             }
             else {
-                response = new ResponseDto<>(HttpStatus.BAD_REQUEST.value(), ServiceConstants.SA003, ServiceConstants.SA003M);
+                response = new ResponseDto<>(HttpStatus.FORBIDDEN.value(), ServiceConstants.SA003, ServiceConstants.SA003M);
             }
         }catch (ServiceCreateException e){
             LOGGER.error("Error in newClient", e);
@@ -73,11 +71,11 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
             photo.setImage(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
             validationUtils.validate(photo);
             if(photoRepository.findByClientId(clientId)==null){
-                photo = photoRepository.insert(photo);
+                photoRepository.insert(photo);
                 response = new ResponseDto<>(HttpStatus.CREATED.value(), ServiceConstants.SA002, ServiceConstants.SA002M, "MongoId de la imagen: "+photo.getId());
             }
             else{
-                response = new ResponseDto<>(HttpStatus.BAD_REQUEST.value(), ServiceConstants.SA003, ServiceConstants.SA003M);
+                response = new ResponseDto<>(HttpStatus.FORBIDDEN.value(), ServiceConstants.SA003, ServiceConstants.SA003M);
             }
         }catch (ServiceCreateException e){
             LOGGER.error("Error in newClient", e);
@@ -86,7 +84,7 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
             response = new ResponseDto<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), ServiceConstants.SA100, ServiceConstants.SA100M);
             LOGGER.error("Error in getClients", e);
         }
-        LOGGER.debug("addPhoto retorna: "+ response);
+        LOGGER.debug("addPhoto retorna: {}", response);
         return  response;
     }
 

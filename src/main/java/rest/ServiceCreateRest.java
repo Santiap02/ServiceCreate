@@ -23,7 +23,8 @@ public class ServiceCreateRest {
     @Operation(summary = "Creación de nuevo cliente", description = "Permite crear un nuevo objeto con la informacion de un cliente")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Cliente guardado exitosamente", response = ResponseDto.class),
-            @ApiResponse(code = 400, message = "El cliente ya existe", response = ResponseDto.class),
+            @ApiResponse(code = 403, message = "El cliente ya existe", response = ResponseDto.class),
+            @ApiResponse(code = 400, message = "Solicitud incorrecta. Por favor valide los datos enviados.", response = ResponseDto.class),
             @ApiResponse(code = 500, message = "Error inesperado durante el proceso", response = ResponseDto.class) })
     @PostMapping(value="/clientes",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseDto<String> saveClient(@RequestBody Cliente cliente){
@@ -32,7 +33,7 @@ public class ServiceCreateRest {
     @Operation(summary = "Creación de imagen de un cliente", description = "Permite crear una nueva imagen de un cliente")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Cliente guardado exitosamente", response = ResponseDto.class),
-            @ApiResponse(code = 400, message = "El cliente ya existe", response = ResponseDto.class),
+            @ApiResponse(code = 403, message = "El cliente ya existe", response = ResponseDto.class),
             @ApiResponse(code = 500, message = "Error inesperado durante el proceso", response = ResponseDto.class) })
     @PostMapping("/photos/add")
     public ResponseDto<String> addPhoto(@Parameter(name = "clientId", required = true, description = "Id del cliente a actualizar", schema = @Schema(implementation = int.class), in = ParameterIn.QUERY)@RequestParam("clientId") int clientId,

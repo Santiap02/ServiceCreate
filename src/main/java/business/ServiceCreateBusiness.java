@@ -17,7 +17,7 @@ public interface ServiceCreateBusiness {
      * @return Respuesta lista de objetos Cliente
      */
 
-    ResponseDto newClient(Cliente cliente);
+    ResponseDto<String> newClient(Cliente cliente);
     /**
      * Permite crear una foto asignada a un cliente a partir de su Id
      *

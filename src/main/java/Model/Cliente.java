@@ -5,7 +5,9 @@ package Model;
  * @author santiago.alvarezp@udea.edu.co
  *
  */
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -13,12 +15,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Entity
 @Table(name="clientes")
-public class Cliente {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Cliente implements Serializable {
 
     @Id
     @NotNull

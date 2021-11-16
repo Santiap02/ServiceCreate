@@ -26,4 +26,5 @@ public class ServiceCreateApplication {
     public javax.validation.Validator localValidatorFactoryBean() {
         return new LocalValidatorFactoryBean();
     }
+
 }

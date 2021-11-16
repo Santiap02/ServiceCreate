@@ -19,8 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("user1").password("{noop}user1")
-                .roles("USER")
+                .withUser("user1")
+                    .password("{noop}user1")
+                    .roles("USER")
                 .and()
                 .withUser("admin")
                     .password("{noop}admin")
@@ -35,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 //y para ver la lista de contactos, tendrán que estar autenticados
                 .antMatchers(HttpMethod.POST,"/clientes").authenticated()
                 .antMatchers(HttpMethod.POST,"/photos/add").authenticated()
+                .antMatchers("/").authenticated()
                 //.antMatchers("/**").authenticated()
                 //.antMatchers("/contactos/**").authenticated()
                 .and()

@@ -12,9 +12,6 @@ import java.util.Set;
 @Component
 public class ValidationUtils {
 
-    //ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-    //public Validator validator = factory.getValidator();
-
     private final Validator validator;
 
     @Autowired
@@ -32,4 +29,5 @@ public class ValidationUtils {
                     ServiceConstants.SA004M);
         }
     }
+
 }
