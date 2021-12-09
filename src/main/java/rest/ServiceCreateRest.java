@@ -1,5 +1,6 @@
 package rest;
 
+import domain.ClienteDto;
 import domain.ResponseDto;
 import business.ServiceCreateBusiness;
 import io.swagger.annotations.ApiResponse;
@@ -28,7 +29,7 @@ public class ServiceCreateRest {
             @ApiResponse(code = 400, message = "Solicitud incorrecta. Por favor valide los datos enviados.", response = ResponseDto.class),
             @ApiResponse(code = 500, message = "Error inesperado durante el proceso", response = ResponseDto.class) })
     @PostMapping(value="/clientes",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseDto<String> saveClient(@RequestBody Cliente cliente){
+    public ResponseDto<String> saveClient(@RequestBody ClienteDto cliente){
         return this.serviceGetBusiness.newClient(cliente);
     }
 

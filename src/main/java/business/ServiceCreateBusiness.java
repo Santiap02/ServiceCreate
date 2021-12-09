@@ -1,7 +1,7 @@
 package business;
 
+import domain.ClienteDto;
 import domain.ResponseDto;
-import Model.Cliente;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -16,8 +16,9 @@ public interface ServiceCreateBusiness {
     /**
      * Permite crear un cliente nuevo
      * @return Respuesta lista de objetos Cliente
+     * @param cliente Objeto de informacion del cliente
      */
-    ResponseDto<String> newClient(Cliente cliente);
+    ResponseDto<String> newClient(ClienteDto cliente);
 
     /**
      * Permite crear una foto asignada a un cliente a partir de su Id
