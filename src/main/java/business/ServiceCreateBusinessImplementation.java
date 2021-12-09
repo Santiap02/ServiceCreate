@@ -1,9 +1,10 @@
 package business;
 
-import Model.Cliente;
 import Model.Photo;
+import Util.ClienteMapper;
 import Util.ServiceConstants;
 import Util.ValidationUtils;
+import domain.ClienteDto;
 import domain.ResponseDto;
 import exception.ServiceCreateException;
 import lombok.AllArgsConstructor;
@@ -30,18 +31,21 @@ public class ServiceCreateBusinessImplementation implements ServiceCreateBusines
     private final PhotoRepository photoRepository;
     /** Validador*/
     private final ValidationUtils validationUtils;
+    /** Mapper*/
+    private final ClienteMapper clienteMapper;
+
 
     /**
-     * @see ServiceCreateBusiness#newClient(Cliente)
+     * @see ServiceCreateBusiness#newClient(ClienteDto)
      */
     @Override
-    public ResponseDto<String> newClient(Cliente cliente) {
+    public ResponseDto<String> newClient(ClienteDto cliente) {
         LOGGER.debug("Se inicia newClient");
         ResponseDto<String> response;
         try {
             validationUtils.validate(cliente);
             if(clientRepository.findById(cliente.getIdCliente()).isEmpty()){
-                clientRepository.save(cliente);
+                clientRepository.save(clienteMapper.clienteDtoToCliente(cliente));
                 response = new ResponseDto<>(HttpStatus.CREATED.value(), ServiceConstants.SA002, ServiceConstants.SA002M);
             }
             else {
